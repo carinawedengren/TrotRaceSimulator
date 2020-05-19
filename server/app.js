@@ -2,6 +2,7 @@ const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
 const index = require("../routes/index");
+const port = process.env.PORT || 4001;
 const app = express();
 app.use(index);
 const server = http.createServer(app);
@@ -73,3 +74,4 @@ io.on("connection", socket => {
   });
 });
 
+server.listen(port, () => console.log(`Listening on port ${port}`));
